@@ -180,6 +180,8 @@ GH_SECRET = "1f2ce8dd971736a9a5b48630c71ea24291abd802"
 
 
 if not DEBUG:
+    SESSION_COOKIE_DOMAIN = ".assettrack.pro"
+    CSRF_COOKIE_DOMAIN = ".assettrack.pro"
     sentry_sdk.init(
         dsn="https://8775bce20e9e16edc7a44172800b8a8b@o4507797287403520.ingest.us.sentry.io/4507797295333376",
         # Set traces_sample_rate to 1.0 to capture 100%
