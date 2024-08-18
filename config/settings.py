@@ -14,6 +14,7 @@ from pathlib import Path
 import environ
 import os
 import dj_database_url
+import sentry_sdk
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,9 @@ SECRET_KEY = "django-insecure-54aksl$a!+qgq7klin+^&d)#)$m54+mul%*yh8^1fdy(&rawa^
 DEBUG = 'RENDER' not in os.environ
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -168,3 +171,16 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
 
 GH_SECRET = "1f2ce8dd971736a9a5b48630c71ea24291abd802"
+
+
+if not DEBUG:
+    sentry_sdk.init(
+        dsn="https://8775bce20e9e16edc7a44172800b8a8b@o4507797287403520.ingest.us.sentry.io/4507797295333376",
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for tracing.
+        traces_sample_rate=1.0,
+        # Set profiles_sample_rate to 1.0 to profile 100%
+        # of sampled transactions.
+        # We recommend adjusting this value in production.
+        profiles_sample_rate=1.0,
+    )
