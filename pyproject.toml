@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "asset-backend"
+version = "0.1.0"
+description = ""
+authors = ["'leechanghwan' <'showmev12@gmail.com'>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.3"
+djangorestframework = "^3.14.0"
+pandas = "^2.2.1"
+pandas-datareader = "^0.10.0"
+yfinance = "^0.2.37"
+django-cors-headers = "^4.3.1"
+requests = "^2.31.0"
+django-environ = "^0.11.2"
+psycopg2-binary = "^2.9.9"
+dj-database-url = "^2.2.0"
+whitenoise = "^6.7.0"
+brotli = "^1.1.0"
+gunicorn = "^23.0.0"
+uvicorn = "^0.30.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
