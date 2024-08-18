@@ -5,8 +5,8 @@ from django.db import models
 class Stock(models.Model):
 
     class cashCurrencyChoices(models.TextChoices):
-        KRW = ("krw", "원화")
-        USD = ("usd", "달러")
+        KRW = "krw", "원화"
+        USD = "usd", "달러"
 
     name = models.CharField(
         max_length=80,
@@ -17,7 +17,7 @@ class Stock(models.Model):
     )
 
     currency = models.CharField(
-        max_length=20, choices=cashCurrencyChoices, default="krw"
+        max_length=20, choices=cashCurrencyChoices.choices, default="krw"
     )
 
     owner = models.ForeignKey(

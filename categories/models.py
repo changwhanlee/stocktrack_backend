@@ -6,8 +6,8 @@ from django.db import models
 class Category(models.Model):
 
     class CategoryChoices(models.TextChoices):
-        STOCK = ("stock", "주식")
-        BANK = ("bank", "예금")
+        STOCK = "stock", "주식"
+        BANK = "bank", "예금"
 
     name = models.CharField(
         max_length=80,
@@ -19,7 +19,7 @@ class Category(models.Model):
     )
 
     classification = models.CharField(
-        max_length=10, choices=CategoryChoices, default="stock"
+        max_length=10, choices=CategoryChoices.choices, default=CategoryChoices.STOCK
     )
 
     def __str__(self) -> str:
